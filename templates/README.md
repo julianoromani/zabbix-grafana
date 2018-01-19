@@ -1,0 +1,1 @@
+UserParameter = system.eventlog[*],cscript "C:\zabbix\zabbix_win_eventlog.vbs" //Nologo $1 $2 $3 $4
