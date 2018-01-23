@@ -38,27 +38,27 @@ AS $BODY$
 
 	for job in execute query loop
       job.name = substring(job.name from 'Bacula Job (.*) Status');
-      execute 'select itemid from items where name like ''%' ||job.name|| ' Last Execution'';' into item;
+      execute 'select itemid from items where hostid = ' ||hid|| ' and name like ''%' ||job.name|| ' Last Execution'';' into item;
       execute 'select value from history_uint where itemid = ' ||item|| 'order by clock desc limit 1;' into itemle;
-      execute 'select itemid from items where name like ''%' ||job.name|| ' Bytes FULL'';' into item;
+      execute 'select itemid from items where hostid = ' ||hid|| ' and name like ''%' ||job.name|| ' Bytes FULL'';' into item;
       execute 'select value from history_uint where itemid = ' ||item|| 'order by clock desc limit 1;' into itembf;
-      execute 'select itemid from items where name like ''%' ||job.name|| ' Bytes INCREMENTAL'';' into item;
+      execute 'select itemid from items where hostid = ' ||hid|| ' and name like ''%' ||job.name|| ' Bytes INCREMENTAL'';' into item;
       execute 'select value from history_uint where itemid = ' ||item|| 'order by clock desc limit 1;' into itembi;
-      execute 'select itemid from items where name like ''%' ||job.name|| ' Bytes DIFFERENTIAL'';' into item;
+      execute 'select itemid from items where hostid = ' ||hid|| ' and name like ''%' ||job.name|| ' Bytes DIFFERENTIAL'';' into item;
       execute 'select value from history_uint where itemid = ' ||item|| 'order by clock desc limit 1;' into itembd;
-      execute 'select itemid from items where name like ''%' ||job.name|| ' Duration FULL'';' into item;
+      execute 'select itemid from items where hostid = ' ||hid|| ' and name like ''%' ||job.name|| ' Duration FULL'';' into item;
       execute 'select value from history_uint where itemid = ' ||item|| 'order by clock desc limit 1;' into itemdf;
-      execute 'select itemid from items where name like ''%' ||job.name|| ' Duration INCREMENTAL'';' into item;
+      execute 'select itemid from items where hostid = ' ||hid|| ' and name like ''%' ||job.name|| ' Duration INCREMENTAL'';' into item;
       execute 'select value from history_uint where itemid = ' ||item|| 'order by clock desc limit 1;' into itemdi;
-      execute 'select itemid from items where name like ''%' ||job.name|| ' Duration DIFFERENTIAL'';' into item;
+      execute 'select itemid from items where hostid = ' ||hid|| ' and name like ''%' ||job.name|| ' Duration DIFFERENTIAL'';' into item;
       execute 'select value from history_uint where itemid = ' ||item|| 'order by clock desc limit 1;' into itemdd;
-      execute 'select itemid from items where name like ''%' ||job.name|| ' Files FULL'';' into item;
+      execute 'select itemid from items where hostid = ' ||hid|| ' and name like ''%' ||job.name|| ' Files FULL'';' into item;
       execute 'select value from history_uint where itemid = ' ||item|| 'order by clock desc limit 1;' into itemff;
-      execute 'select itemid from items where name like ''%' ||job.name|| ' Files INCREMENTAL'';' into item;
+      execute 'select itemid from items where hostid = ' ||hid|| ' and name like ''%' ||job.name|| ' Files INCREMENTAL'';' into item;
       execute 'select value from history_uint where itemid = ' ||item|| 'order by clock desc limit 1;' into itemfi;
-      execute 'select itemid from items where name like ''%' ||job.name|| ' Files DIFFERENTIAL'';' into item;
+      execute 'select itemid from items where hostid = ' ||hid|| ' and name like ''%' ||job.name|| ' Files DIFFERENTIAL'';' into item;
       execute 'select value from history_uint where itemid = ' ||item|| 'order by clock desc limit 1;' into itemfd;
-      execute 'select itemid from items where name like ''%' ||job.name|| ' Status'';' into item;
+      execute 'select itemid from items where hostid = ' ||hid|| ' and name like ''%' ||job.name|| ' Status'';' into item;
       execute 'select value from history_str where itemid = ' ||item|| 'order by clock desc limit 1;' into itemst;
 
 
